@@ -6,6 +6,6 @@ class HomeController
 {
     public function index($request, $view)
     {
-        return app_view('template-cta.twig');
+        echo 'test';
     }
 }

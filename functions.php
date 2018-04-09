@@ -9,7 +9,7 @@ add_action('after_setup_theme', function () {
         ],
     ]);
     $container = WPEmerge::getContainer();
-    $container[ WPEMERGE_VIEW_ENGINE_KEY ] = $container->raw( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
+    $container[WPEMERGE_VIEW_ENGINE_KEY] = $container->raw(WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY);
 
     require 'app/framework.php';
 });
