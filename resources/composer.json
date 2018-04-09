@@ -1,0 +1,11 @@
+{
+  "require": {
+    "htmlburger/wpemerge": "^0.8.5",
+    "htmlburger/wpemerge-twig": "^0.8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/src/"
+    }
+  }
+}
