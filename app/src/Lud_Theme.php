@@ -13,6 +13,27 @@ class Lud_Theme
         $this->cleanup();
     }
 
+    public function assets()
+    {
+        wp_enqueue_style('app', $this::asset_url('app', 'css'), array(), null);
+        wp_enqueue_script('script-name', $this::asset_url('app', 'js'), array(), null, true);
+    }
+
+    public function clean_assets()
+    {
+        if (!is_admin()) {
+            wp_deregister_script('wp-embed');
+        }
+    }
+
+    public function cleanup()
+    {
+        remove_action('wp_head', 'print_emoji_detection_script', 7);
+        remove_action('admin_print_scripts', 'print_emoji_detection_script');
+        remove_action('wp_print_styles', 'print_emoji_styles');
+        remove_action('admin_print_styles', 'print_emoji_styles');
+    }
+
     static function asset_url($file, $extension)
     {
         $found_file = '';
@@ -29,26 +50,6 @@ class Lud_Theme
         }
 
         return $found_file;
-    }
-
-    public function assets()
-    {
-        wp_enqueue_style('app', $this::asset_url('app', 'css'), array(), null);
-        wp_enqueue_script('script-name', $this::asset_url('app', 'js'), array(), null, true);
-    }
-
-    public function clean_assets()
-    {
-        if (!is_admin()) {
-            wp_deregister_script('wp-embed');
-        }
-    }
-
-    public function cleanup() {
-        remove_action('wp_head', 'print_emoji_detection_script', 7);
-        remove_action('admin_print_scripts', 'print_emoji_detection_script');
-        remove_action('wp_print_styles', 'print_emoji_styles');
-        remove_action('admin_print_styles', 'print_emoji_styles');
     }
 
 }
