@@ -1,6 +1,6 @@
 {
   "require": {
-    "htmlburger/wpemerge": "^0.8.5"
+    "htmlburger/carbon-fields": "^2.2"
   },
   "autoload": {
     "psr-4": {

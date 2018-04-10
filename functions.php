@@ -2,8 +2,6 @@
 
 require 'resources/vendor/autoload.php';
 
-add_action('after_setup_theme', function () {
-    WPEmerge::boot();
+global $theme;
 
-    require 'app/framework.php';
-});
+$theme = new \App\Lud_Theme();
