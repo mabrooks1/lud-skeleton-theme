@@ -32,7 +32,7 @@ class Lud_Util {
 	 *
 	 * @return string
 	 */
-	static function asset_url( $file, $extension ) {
+	public static function asset_url( $file, $extension ) {
 		$found_file = '';
 
 		$files = array_diff(
@@ -58,7 +58,7 @@ class Lud_Util {
 	 *
 	 * @return object
 	 */
-	static function get_theme_modules() {
+	public static function get_theme_modules() {
 		$modules = (object) '';
 
 		$modules_dir = __DIR__ . '/modules';
@@ -94,7 +94,7 @@ class Lud_Util {
 	 *
 	 * @return object
 	 */
-	static function new_module( $module_name ) {
+	public static function new_module( $module_name ) {
 		$module_path = "\App\Modules\\$module_name";
 
 		$module = new $module_path();
