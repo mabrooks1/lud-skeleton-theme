@@ -7,3 +7,12 @@ filter:
     excluded_paths:
         - "resources/vendor/"
         - "build/"
+    dependency_paths:
+        - wordpress/
+
+build:
+    nodes:
+        analysis:
+            dependencies:
+                before:
+                    - composer require --dev johnpbloch/wordpress
