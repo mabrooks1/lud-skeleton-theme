@@ -1,55 +1,92 @@
 <?php
 
+/**
+ * Lud_Theme File
+ * PHP version 7
+ *
+ * @category Controllers
+ * @package  App
+ * @author   Level Up Digital <info@levelup-digital.co.uk>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://www.hashbangcode.com/
+ */
+
 namespace App;
 
+/**
+ * Lud_Theme Class
+ *
+ * @category Controllers
+ * @package  App
+ * @author   Level Up Digital <info@levelup-digital.co.uk>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://www.hashbangcode.com/
+ */
 class Lud_Theme
 {
     protected $version = '1.0.0';
 
+    public $modules;
+
+    /**
+     * Sets up the Lud_Theme Class
+     *
+     * @return void
+     */
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', array($this, 'assets'));
-        add_action('wp_enqueue_scripts', array($this, 'clean_assets'));
+        add_action('wp_enqueue_scripts', array( $this, 'assets' ));
+        add_action('wp_enqueue_scripts', array( $this, 'cleanAssets' ));
         $this->cleanup();
+
+        $this->modules = Lud_Util::getThemeModules();
     }
 
+    /**
+     * Adds the assets to WordPress
+     *
+     * @return void
+     */
     public function assets()
     {
-        wp_enqueue_style('app', $this::asset_url('app', 'css'), array(), null);
-        wp_enqueue_script('script-name', $this::asset_url('app', 'js'), array(), null, true);
+        wp_enqueue_style(
+            'app',
+            Lud_Util::assetUrl('app', 'css'),
+            array(),
+            null
+        );
+
+        wp_enqueue_script(
+            'script-name',
+            Lud_Util::assetUrl('app', 'js'), [],
+            null,
+            true
+        );
     }
 
-    public function clean_assets()
+    /**
+     * Removes unneeded assets
+     *
+     * @return void
+     */
+    public function cleanAssets()
     {
-        if (!is_admin()) {
+        if (! is_admin() ) {
             wp_deregister_script('wp-embed');
         }
     }
 
+    /**
+     * Removes unneeded actions
+     *
+     * @return void
+     */
     public function cleanup()
     {
         remove_action('wp_head', 'print_emoji_detection_script', 7);
         remove_action('admin_print_scripts', 'print_emoji_detection_script');
         remove_action('wp_print_styles', 'print_emoji_styles');
         remove_action('admin_print_styles', 'print_emoji_styles');
-    }
-
-    static function asset_url($file, $extension)
-    {
-        $found_file = '';
-
-        $files = array_diff(scandir(get_stylesheet_directory() . '/build/' . $extension), array('..', '.'));
-
-        foreach ($files as $asset) {
-            $regex = '/' . $file . '.*?\.' . $extension . '/';
-
-            $match_results = preg_match($regex, $asset);
-            if ($match_results) {
-                $found_file = get_stylesheet_directory_uri() . '/build/' . $extension . '/' . $asset;
-            }
-        }
-
-        return $found_file;
     }
 
 }
