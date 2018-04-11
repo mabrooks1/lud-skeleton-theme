@@ -23,41 +23,38 @@ namespace App\Modules;
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     http://www.hashbangcode.com/
  */
-class Lud_Filter implements \App\Lud_Module
-{
+class Lud_Filter implements \App\Lud_Module {
 
-    private $_module_count = 0;
 
-    /**
-     * Setups the module
-     *
-     * @return void
-     */
-    public function setup() 
-    {
-        // TODO: Implement setup() method.
-    }
+	private $_module_count = 0;
 
-    /**
-     * Runs any needed Queries.
-     *
-     * @param array $args The arguments for the query.
-     *
-     * @return void
-     */
-    public function query($args) 
-    {
-        // TODO: Implement query() method.
-    }
+	/**
+	 * Setups the module
+	 *
+	 * @return void
+	 */
+	public function setup() {
+		// TODO: Implement setup() method.
+	}
 
-    /**
-     * Returns the module response.
-     *
-     * @return array|void
-     */
-    public function response() 
-    {
-        // TODO: Implement response() method.
-    }
+	/**
+	 * Runs any needed Queries.
+	 *
+	 * @param array $args The arguments for the query.
+	 *
+	 * @return void
+	 */
+	public function query( $args ) {
+		// TODO: Implement query() method.
+	}
+
+	/**
+	 * Returns the module response.
+	 *
+	 * @return array|void
+	 */
+	public function response() {
+		// TODO: Implement response() method.
+	}
 
 }

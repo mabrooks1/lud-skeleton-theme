@@ -22,71 +22,67 @@ namespace App;
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     http://www.hashbangcode.com/
  */
-class Lud_Theme
-{
-    protected $version = '1.0.0';
+class Lud_Theme {
 
-    public $modules;
+	protected $version = '1.0.0';
 
-    /**
-     * Sets up the Lud_Theme Class
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        add_action('wp_enqueue_scripts', array($this, 'assets'));
-        add_action('wp_enqueue_scripts', array($this, 'cleanAssets'));
-        $this->cleanup();
+	public $modules;
 
-        $this->modules = Lud_Util::getThemeModules();
-    }
+	/**
+	 * Sets up the Lud_Theme Class
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'cleanAssets' ) );
+		$this->cleanup();
 
-    /**
-     * Adds the assets to WordPress
-     *
-     * @return void
-     */
-    public function assets()
-    {
-        wp_enqueue_style(
-            'app',
-            Lud_Util::assetUrl('app', 'css'),
-            array(),
-            null
-        );
+		$this->modules = Lud_Util::getThemeModules();
+	}
 
-        wp_enqueue_script(
-            'script-name',
-            Lud_Util::assetUrl('app', 'js'), [],
-            null,
-            true
-        );
-    }
+	/**
+	 * Adds the assets to WordPress
+	 *
+	 * @return void
+	 */
+	public function assets() {
+		wp_enqueue_style(
+			'app',
+			Lud_Util::assetUrl( 'app', 'css' ),
+			array(),
+			null
+		);
 
-    /**
-     * Removes unneeded assets
-     *
-     * @return void
-     */
-    public function cleanAssets()
-    {
-        if (!is_admin()) {
-            wp_deregister_script('wp-embed');
-        }
-    }
+		wp_enqueue_script(
+			'script-name',
+			Lud_Util::assetUrl( 'app', 'js' ), [],
+			null,
+			true
+		);
+	}
 
-    /**
-     * Removes unneeded actions
-     *
-     * @return void
-     */
-    public function cleanup()
-    {
-        remove_action('wp_head', 'print_emoji_detection_script', 7);
-        remove_action('admin_print_scripts', 'print_emoji_detection_script');
-        remove_action('wp_print_styles', 'print_emoji_styles');
-        remove_action('admin_print_styles', 'print_emoji_styles');
-    }
+	/**
+	 * Removes unneeded assets
+	 *
+	 * @return void
+	 */
+	public function cleanAssets() {
+		if ( ! is_admin() ) {
+			wp_deregister_script( 'wp-embed' );
+		}
+	}
+
+	/**
+	 * Removes unneeded actions
+	 *
+	 * @return void
+	 */
+	public function cleanup() {
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_print_styles', 'print_emoji_styles' );
+	}
 
 }

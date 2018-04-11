@@ -6,3 +6,4 @@ checks:
 filter:
     excluded_paths:
         - "resources/vendor/"
+        - "build/"
