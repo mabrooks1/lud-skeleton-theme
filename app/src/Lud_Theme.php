@@ -35,8 +35,8 @@ class Lud_Theme
      */
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', array( $this, 'assets' ));
-        add_action('wp_enqueue_scripts', array( $this, 'cleanAssets' ));
+        add_action('wp_enqueue_scripts', array($this, 'assets'));
+        add_action('wp_enqueue_scripts', array($this, 'cleanAssets'));
         $this->cleanup();
 
         $this->modules = Lud_Util::getThemeModules();
@@ -71,7 +71,7 @@ class Lud_Theme
      */
     public function cleanAssets()
     {
-        if (! is_admin() ) {
+        if (!is_admin()) {
             wp_deregister_script('wp-embed');
         }
     }

@@ -45,7 +45,7 @@ class Lud_Filter implements \App\Lud_Module
      *
      * @return void
      */
-    public function query( $args ) 
+    public function query($args) 
     {
         // TODO: Implement query() method.
     }

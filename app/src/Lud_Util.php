@@ -33,20 +33,20 @@ class Lud_Util
      *
      * @return string
      */
-    static function assetUrl( $file, $extension ) 
+    static function assetUrl($file, $extension) 
     {
         $found_file = '';
 
         $files = array_diff(
-            scandir(get_stylesheet_directory() . "/build/$extension"),
-            [ '..', '.' ]
+            scandir(get_stylesheet_directory()."/build/$extension"),
+            ['..', '.']
         );
 
-        foreach ( $files as $asset ) {
-            $regex = '/' . $file . '.*?\.' . $extension . '/';
+        foreach ($files as $asset) {
+            $regex = '/'.$file.'.*?\.'.$extension.'/';
 
             $match_results = preg_match($regex, $asset);
-            if ($match_results ) {
+            if ($match_results) {
                 $style_dir  = get_stylesheet_directory_uri();
                 $found_file = "$style_dir/build/$extension/$asset";
             }
@@ -64,16 +64,16 @@ class Lud_Util
     {
         $modules = (object) '';
 
-        $modules_dir = __dir__ . '/modules';
+        $modules_dir = __dir__.'/modules';
 
         $module_classes = array_diff(
             scandir($modules_dir),
-            array( '..', '.' )
+            array('..', '.')
         );
 
-        foreach ( $module_classes as $module_class ) {
+        foreach ($module_classes as $module_class) {
             $class_name      = str_replace('.php', '', $module_class);
-            $class_namespace = '\App\Modules\\' . $class_name;
+            $class_namespace = '\App\Modules\\'.$class_name;
 
             $module = new $class_namespace();
             $module->setup();
@@ -91,7 +91,7 @@ class Lud_Util
      *
      * @return object
      */
-    static function newModule( $module_name ) 
+    static function newModule($module_name) 
     {
         $module_path = "\App\Modules\\$module_name";
 
