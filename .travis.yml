@@ -83,4 +83,4 @@ script:
     # -n flag: Do not print warnings (shortcut for --warning-severity=0)
     # --standard: Use WordPress as the standard.
     # --extensions: Only sniff PHP files.
-    - phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php --ignore=resources/vendor/*,resources/node_modules/*
+    - $WP_DEVELOP_DIR/wpcs/vendor/bin/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php --ignore=resources/vendor/*,resources/node_modules/*
