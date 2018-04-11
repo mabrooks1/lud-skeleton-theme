@@ -75,12 +75,30 @@ class Lud_Util
             $class_name      = str_replace('.php', '', $module_class);
             $class_namespace = '\App\Modules\\' . $class_name;
 
-            $class = new $class_namespace();
+            $module = new $class_namespace();
+            $module->setup();
 
-            $modules->{$class_name} = $class;
+            $modules->{$class_name} = $module;
         }
 
         return $modules;
+    }
+
+    /**
+     * Creates a new module.
+     *
+     * @param string $module_name The name of the module.
+     *
+     * @return object
+     */
+    static function newModule( $module_name ) 
+    {
+        $module_path = "\App\Modules\\$module_name";
+
+        $module = new $module_path();
+        $module->setup();
+
+        return $module;
     }
 
 }

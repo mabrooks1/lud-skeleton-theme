@@ -26,10 +26,26 @@ interface Lud_Module
 {
 
     /**
-     * Setups the module
+     * Setups the module.
      *
      * @return void
      */
     public function setup();
+
+    /**
+     * Runs any needed Queries.
+     *
+     * @param array $args The arguments for the query.
+     * 
+     * @return void
+     */
+    public function query($args);
+
+    /**
+     * Returns the module response.
+     *
+     * @return array
+     */
+    public function response();
 
 }
