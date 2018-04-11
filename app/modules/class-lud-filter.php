@@ -39,6 +39,7 @@ class Lud_Filter implements \App\Lud_Module {
 	 */
 	public function setup() {
 		// TODO: Implement setup() method.
+		$this->_module_count++;
 	}
 
 	/**
