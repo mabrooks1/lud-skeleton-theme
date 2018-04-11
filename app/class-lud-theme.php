@@ -1,62 +1,59 @@
 <?php
-
 /**
- * Lud_Theme File
- * PHP version 7
+ * Lud-Skeleton-Theme Lud_Theme File.
  *
- * @category Controllers
- * @package  App
- * @author   Level Up Digital <info@levelup-digital.co.uk>
- * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @link     http://www.hashbangcode.com/
+ * @class    Lud_Theme
+ * @package  Lud-Skeleton-Theme/Classes
  */
 
 namespace App;
 
 /**
  * Lud_Theme Class
- *
- * @category Controllers
- * @package  App
- * @author   Level Up Digital <info@levelup-digital.co.uk>
- * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @link     http://www.hashbangcode.com/
  */
 class Lud_Theme {
 
+	/**
+	 * The theme version.
+	 *
+	 * @var string
+	 */
 	protected $version = '1.0.0';
 
+	/**
+	 * The modules object.
+	 *
+	 * @var object
+	 */
 	public $modules;
 
 	/**
 	 * Sets up the Lud_Theme Class
-	 *
-	 * @return void
 	 */
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'cleanAssets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'clean_assets' ) );
 		$this->cleanup();
 
-		$this->modules = Lud_Util::getThemeModules();
+		require_once( __DIR__ . '/class-lud-module.php' );
+
+		$this->modules = Lud_Util::get_theme_modules();
 	}
 
 	/**
 	 * Adds the assets to WordPress
-	 *
-	 * @return void
 	 */
 	public function assets() {
 		wp_enqueue_style(
 			'app',
-			Lud_Util::assetUrl( 'app', 'css' ),
+			Lud_Util::asset_url( 'app', 'css' ),
 			array(),
 			null
 		);
 
 		wp_enqueue_script(
 			'script-name',
-			Lud_Util::assetUrl( 'app', 'js' ), [],
+			Lud_Util::asset_url( 'app', 'js' ), [],
 			null,
 			true
 		);
@@ -64,10 +61,8 @@ class Lud_Theme {
 
 	/**
 	 * Removes unneeded assets
-	 *
-	 * @return void
 	 */
-	public function cleanAssets() {
+	public function clean_assets() {
 		if ( ! is_admin() ) {
 			wp_deregister_script( 'wp-embed' );
 		}
@@ -75,8 +70,6 @@ class Lud_Theme {
 
 	/**
 	 * Removes unneeded actions
-	 *
-	 * @return void
 	 */
 	public function cleanup() {
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );

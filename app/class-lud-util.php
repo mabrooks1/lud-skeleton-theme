@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Lud_Util File
  * PHP version 7
@@ -28,12 +27,12 @@ class Lud_Util {
 	/**
 	 * Returns the url for a theme asset
 	 *
-	 * @param string $file      The filename to search for.
+	 * @param string $file The filename to search for.
 	 * @param string $extension The extension of the file.
 	 *
 	 * @return string
 	 */
-	static function assetUrl( $file, $extension ) {
+	static function asset_url( $file, $extension ) {
 		$found_file = '';
 
 		$files = array_diff(
@@ -59,10 +58,10 @@ class Lud_Util {
 	 *
 	 * @return object
 	 */
-	static function getThemeModules() {
+	static function get_theme_modules() {
 		$modules = (object) '';
 
-		$modules_dir = __dir__ . '/modules';
+		$modules_dir = __DIR__ . '/modules';
 
 		$module_classes = array_diff(
 			scandir( $modules_dir ),
@@ -70,7 +69,13 @@ class Lud_Util {
 		);
 
 		foreach ( $module_classes as $module_class ) {
-			$class_name      = str_replace( '.php', '', $module_class );
+			require_once( "$modules_dir/$module_class" );
+
+			$class_name = str_replace( 'class-', '', $module_class );
+			$class_name = str_replace( '-', '_', $class_name );
+			$class_name = str_replace( '.php', '', $class_name );
+			$class_name = ucwords( $class_name );
+
 			$class_namespace = '\App\Modules\\' . $class_name;
 
 			$module = new $class_namespace();
@@ -89,7 +94,7 @@ class Lud_Util {
 	 *
 	 * @return object
 	 */
-	static function newModule( $module_name ) {
+	static function new_module( $module_name ) {
 		$module_path = "\App\Modules\\$module_name";
 
 		$module = new $module_path();

@@ -25,7 +25,11 @@ namespace App\Modules;
  */
 class Lud_Filter implements \App\Lud_Module {
 
-
+	/**
+	 * The module counter.
+	 *
+	 * @var int
+	 */
 	private $_module_count = 0;
 
 	/**

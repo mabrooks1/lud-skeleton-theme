@@ -1,3 +1,10 @@
+<?php
+/**
+ * The header file.
+ *
+ * @package Lud-Skeleton-Theme/Templates
+ */
+?>
 <!doctype html>
 <html lang="en-GB">
 <head>

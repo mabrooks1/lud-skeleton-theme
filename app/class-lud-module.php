@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Lud_Module File
  * PHP version 7
