@@ -27,8 +27,6 @@ class Lud_Theme {
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'clean_assets' ) );
 		$this->cleanup();
-
-		require_once( __DIR__ . '/class-lud-module.php' );
 	}
 
 	/**

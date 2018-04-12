@@ -57,9 +57,16 @@ class Lud_Util {
 	 * Returns the url for a theme asset
 	 *
 	 * @param string $module The module to load.
+	 *
+	 * @return object
 	 */
 	public static function load_module( $module ) {
 		require __DIR__ . "/modules/class-$module.php";
+
+		$class_name = ucwords( str_replace( '-', '_', $module ) );
+		$class = "\App\Modules\\$class_name";
+
+		return new $class();
 	}
 
 }

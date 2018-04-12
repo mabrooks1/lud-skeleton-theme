@@ -23,7 +23,7 @@ namespace App\Modules;
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     http://www.hashbangcode.com/
  */
-class Lud_Filter implements \App\Lud_Module {
+class Lud_Filter {
 
 	/**
 	 * The module counter.
