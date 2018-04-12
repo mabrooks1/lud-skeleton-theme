@@ -54,53 +54,12 @@ class Lud_Util {
 	}
 
 	/**
-	 * Returns an array of all modules and their names.
+	 * Returns the url for a theme asset
 	 *
-	 * @return object
+	 * @param string $module The module to load.
 	 */
-	public static function get_theme_modules() {
-		$modules = (object) '';
-
-		$modules_dir = __DIR__ . '/modules';
-
-		$module_classes = array_diff(
-			scandir( $modules_dir ),
-			array( '..', '.' )
-		);
-
-		foreach ( $module_classes as $module_class ) {
-			require_once( "$modules_dir/$module_class" );
-
-			$class_name = str_replace( 'class-', '', $module_class );
-			$class_name = str_replace( '-', '_', $class_name );
-			$class_name = str_replace( '.php', '', $class_name );
-			$class_name = ucwords( $class_name );
-
-			$class_namespace = '\App\Modules\\' . $class_name;
-
-			$module = new $class_namespace();
-			$module->setup();
-
-			$modules->{$class_name} = $module;
-		}
-
-		return $modules;
-	}
-
-	/**
-	 * Creates a new module.
-	 *
-	 * @param string $module_name The name of the module.
-	 *
-	 * @return object
-	 */
-	public static function new_module( $module_name ) {
-		$module_path = "\App\Modules\\$module_name";
-
-		$module = new $module_path();
-		$module->setup();
-
-		return $module;
+	public static function load_module( $module ) {
+		require __DIR__ . "/modules/class-$module.php";
 	}
 
 }

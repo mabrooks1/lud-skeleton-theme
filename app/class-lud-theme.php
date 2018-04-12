@@ -21,13 +21,6 @@ class Lud_Theme {
 	protected $version = '1.0.0';
 
 	/**
-	 * The modules object.
-	 *
-	 * @var object
-	 */
-	public $modules;
-
-	/**
 	 * Sets up the Lud_Theme Class
 	 */
 	public function __construct() {
@@ -36,8 +29,6 @@ class Lud_Theme {
 		$this->cleanup();
 
 		require_once( __DIR__ . '/class-lud-module.php' );
-
-		$this->modules = Lud_Util::get_theme_modules();
 	}
 
 	/**

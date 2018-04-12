@@ -1,5 +1,6 @@
 {
   "require": {
-    "htmlburger/carbon-fields": "^2.2"
+    "htmlburger/carbon-fields": "^2.2",
+    "fzaninotto/faker": "^1.7"
   }
 }

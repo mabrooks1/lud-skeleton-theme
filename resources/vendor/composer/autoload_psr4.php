@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Carbon_Fields\\' => array($vendorDir . '/htmlburger/carbon-fields/core'),
-    'App\\' => array($baseDir . '/../app/src'),
 );

@@ -7,24 +7,24 @@ namespace Composer\Autoload;
 class ComposerStaticInit2bbddcacabea209681c2cc7e06c7e1b3
 {
     public static $prefixLengthsPsr4 = array (
+        'F' => 
+        array (
+            'Faker\\' => 6,
+        ),
         'C' => 
         array (
             'Carbon_Fields\\' => 14,
         ),
-        'A' => 
-        array (
-            'App\\' => 4,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
         'Carbon_Fields\\' => 
         array (
             0 => __DIR__ . '/..' . '/htmlburger/carbon-fields/core',
-        ),
-        'App\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/../app/src',
         ),
     );
 
