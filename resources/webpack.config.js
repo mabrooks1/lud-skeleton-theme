@@ -5,7 +5,7 @@ Encore
 	.setOutputPath( '../build/' )
 
 	// the public path used by the web server to access the previous directory
-	.setPublicPath( '/wp-content/themes/lud_v2/build' )
+	.setPublicPath( '/wp-content/themes/lud-skeleton-theme/build' )
 
 	// will create build/app.js and build/app.css
 	.addEntry( 'css/app', './assets/css/app.scss' )
